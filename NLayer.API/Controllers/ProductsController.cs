@@ -7,7 +7,9 @@ using NLayer.Core.Services;
 
 namespace NLayer.API.Controllers;
 
-
+// bu sınıftaki business kodlarını temizleyip servis sınıfına ekleyebimek için Direk IServiceWithDto,IProductServiceWithdto sınıflarını oluşturduk 
+//  kullanım örneği için de bu controllera dokunmadık yine ProductWithDtoController sınıfını oluşturduk ve onun üzerinde denedik böylece controller sınıfındaki iş katmanı kodlarından kurtulduk hepsini servis katmanına pasladık
+// örneği görmek service_with_dto branchine geç
 public class ProductsController(IMapper mapper, IProductService productService) : CustomBaseController
 {
     private readonly IMapper _mapper = mapper;
