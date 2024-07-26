@@ -1,11 +1,8 @@
 using System.Reflection;
-using Autofac;
-using Autofac.Extensions.DependencyInjection;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using NLayer.API.Filters;
-using NLayer.API.Modules;
 using NLayer.Core.Repositories;
 using NLayer.Core.Services;
 using NLayer.Core.UnitOfWorks;
@@ -39,8 +36,6 @@ builder.Services.Configure<ApiBehaviorOptions>(options => options.SuppressModelS
 // global olarak ekledik yani tüm kontroller sınıfı ve action metodları default olarak bu filtreden geçecekç eğer global olarak eklemeyeceksen yani sadece belirli action metodları etkilensin istiyosan metodun üzerine [ServiceFilter(typeof(ValidateFilterAttribute))] şeklnde eklemen gerek. Controller bazlıda yapabilirsin
 builder.Services.AddControllers(options =>  options.Filters.Add(new ValidateFilterAttribute())).AddFluentValidation(x => x.RegisterValidatorsFromAssemblyContaining<ProductDtoValidator>());
 
-// builder.Host.UseServiceProviderFactory(new AutofacServiceProviderFactory());
-// builder.Host.ConfigureContainer<ContainerBuilder>(containerBuilder => containerBuilder.RegisterModule(new RepoServiceModule()));
 
 builder.Services.AddMemoryCache();
 
